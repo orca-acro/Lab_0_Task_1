@@ -51,7 +51,13 @@ def check_not_finished_board(board: list):
     >>> check_not_finished_board(['***21**', '412453*', '423145*', '*5?3215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    pass
+    element = 0
+    for i in range(len(board)):
+        element += board[i].find('?')
+    if abs(element) == len(board):
+        return True
+    else:
+        return False
 
 
 def check_uniqueness_in_rows(board: list):
@@ -68,7 +74,14 @@ def check_uniqueness_in_rows(board: list):
     False
     
     """
-    pass
+    for i in range(len(board)):
+        row = board[i]
+        for j in range(1, len(row)-1):
+            if row[j].isdigit() == True:
+                for k in range(j+1, len(row)-1):
+                    if row[j] == row[k]:
+                        return False
+    return True
 
 
 def check_horizontal_visibility(board: list):
